@@ -37,7 +37,7 @@ public class App {
         supercontainer.remove(81);
         supercontainer.remove(11);
 
-        System.out.println("Print after removing few keys\n\n");
+        System.out.println("\nPrint after removing few keys");
 
         // Print the SuperContainer as HashTable
         supercontainer.printHashTable();
