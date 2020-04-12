@@ -16,5 +16,10 @@ public class App {
         container.printInsertedNodesInOrder();
         container.printInsertedNodesInAscByKey();
         container.printInsertedNodesInDscByKey();
+        container.remove(81);
+        container.printHashTable();
+        container.printInsertedNodesInOrder();
+        container.printInsertedNodesInAscByKey();
+        container.printInsertedNodesInDscByKey();
     }
 }

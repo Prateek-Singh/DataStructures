@@ -45,6 +45,68 @@ public class Container {
         return true;
     }
 
+    public boolean remove(int key) {
+        int hashedOffset = hashKey(key);
+
+        Node prevEntry = null;
+
+        for (Node current = hashTable[hashedOffset]; current != null; current = current.getCollissionEntry()) {
+            if (key == current.getKey()) {
+                if (prevEntry != null && current.getCollissionEntry() != null) {
+                    prevEntry.setCollissionEntry(current.getCollissionEntry());
+                } else if (prevEntry == null) {
+                    hashTable[hashedOffset] = current.getCollissionEntry();
+                }
+            } else {
+                prevEntry = current;
+            }
+        }
+
+        for (Node current = sentinelHead.getNextEntry(); current != sentinelTail; current = current.getNextEntry()) {
+            if (key == current.getKey()) {
+                current.getPrevEntry().setNextEntry(current.getNextEntry());
+                current.getNextEntry().setPrevEntry(current.getPrevEntry());
+            }
+        }
+
+        root = deleteEntry(root, key);
+
+        return true;
+    }
+
+    private Node deleteEntry(Node root, int key) {
+        if (root == null) {
+            return root;
+        }
+
+        if (key > root.getKey()) {
+            root.setRightEntry(deleteEntry(root.getRightEntry(), key));
+        } else if (key < root.getKey()) {
+            root.setLeftEntry(deleteEntry(root.getLeftEntry(), key));
+        } else {
+            if (root.getLeftEntry() != null && root.getRightEntry() != null) {
+                Node newRoot = minimumKeyNode(root.getRightEntry());
+                root.setKey(newRoot.getKey());
+                root.setValue(newRoot.getValue());
+                root.setRightEntry(deleteEntry(root.getRightEntry(), newRoot.getKey()));
+            } else if (root.getLeftEntry() != null) {
+                root = root.getLeftEntry();
+            } else if (root.getRightEntry() != null) {
+                root = root.getRightEntry();
+            } else
+                root = null;
+        }
+        return root;
+    }
+
+    private Node minimumKeyNode(Node node) {
+        if (node.getLeftEntry() == null) {
+            return node;
+        } else {
+            return minimumKeyNode(node.getLeftEntry());
+        }
+    }
+
     public void printHashTable() {
         System.out.println("HashTable");
         for (int index = 0; hashTable.length > index; index++) {
