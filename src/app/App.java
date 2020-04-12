@@ -36,6 +36,7 @@ public class App {
         // Remove few nodes
         supercontainer.remove(81);
         supercontainer.remove(11);
+        supercontainer.remove(9);
 
         System.out.println("\nPrint after removing few keys");
 
@@ -50,5 +51,7 @@ public class App {
 
         // Print the SuperContainer as Binary Search Tree in Descending Order
         supercontainer.printInsertedNodesInDscByKey();
+
+        System.out.println();
     }
 }
