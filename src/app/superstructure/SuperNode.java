@@ -1,4 +1,4 @@
-package superstructure;
+package app.superstructure;
 
 /**
  * SuperNode to hold key and value. For our code key is int and value is String.

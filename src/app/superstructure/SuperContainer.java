@@ -1,4 +1,4 @@
-package superstructure;
+package app.superstructure;
 
 /**
  * SuperContainer binds nodes and performs functions for internal structures.
