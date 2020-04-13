@@ -5,12 +5,14 @@ package app.sentinellist;
  * 
  * @author Prateek Singh
  */
-class Node {
-    private Node prevEntry;
-    private Node nextEntry;
-    private int value;
+class Node<T extends Comparable<T>> {
+    private Node<T> prevEntry;
+    private Node<T> nextEntry;
+    private T value;
 
-    public Node(int value) {
+    public Node() {}
+
+    public Node(T value) {
         this.value = value;
     }
 
@@ -18,23 +20,23 @@ class Node {
         return prevEntry;
     }
 
-    public void setPrevEntry(Node prevEntry) {
+    public void setPrevEntry(Node<T> prevEntry) {
         this.prevEntry = prevEntry;
     }
 
-    public Node getNextEntry() {
+    public Node<T> getNextEntry() {
         return nextEntry;
     }
 
-    public void setNextEntry(Node nextEntry) {
+    public void setNextEntry(Node<T> nextEntry) {
         this.nextEntry = nextEntry;
     }
 
-    public int getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(T value) {
         this.value = value;
     }    
 }
