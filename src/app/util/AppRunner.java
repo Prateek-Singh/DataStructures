@@ -11,7 +11,7 @@ public class AppRunner {
     public static void run() throws Exception {    
         try(Scanner scanner = new Scanner(System.in)) {
             while(true) {
-                System.out.println("Select the Id of the data structure to run or press 0 to exit");
+                System.out.println("\nSelect the Id of the data structure to run or press 0 to exit\n");
                 for(DSInstances dsInstances : DSInstances.getList()) {
                     System.out.println(String.format("%d : %s", dsInstances.getId(), dsInstances.getName()));
                 }

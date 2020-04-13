@@ -43,7 +43,7 @@ public class SentinelLinkedList {
 
     //Display the Sentinel Linked List by going over nodes between head and tail
     public void display() {
-        System.out.println("Sentinel Linked List");
+        System.out.println("\nSentinel Linked List");
         System.out.print("[Head] => ");
         for(Node current = head.getNextEntry(); current != tail; current = current.getNextEntry()) {
             System.out.print(String.format("%s => ", current.getValue()));

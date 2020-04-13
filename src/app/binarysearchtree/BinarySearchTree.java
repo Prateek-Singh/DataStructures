@@ -38,11 +38,11 @@ public class BinarySearchTree {
     //Display the Binary Tree in either Ascending(L -> N -> R) or Descending(R -> N -> L) order
     public void display(boolean inDescendingOrder) {
         if (inDescendingOrder) {
-            System.out.println("Binary Search Tree in Descending Order");
+            System.out.println("\nBinary Search Tree in Descending Order");
             displayInDescendingOrder(root);
             System.out.println();
         } else {
-            System.out.println("Binary Search Tree in Ascending Order");
+            System.out.println("\nBinary Search Tree in Ascending Order");
             displayInAscendingOrder(root);
             System.out.println();
         }
