@@ -5,11 +5,11 @@ package app.sentinellist;
  * 
  * @author Prateek Singh
  */
-public class SentinelLinkedList<T extends Comparable<T>> {
+public class SentinelLinkedList<T> {
     Class<T> tClass;
     //Create sentinel head and tail nodes
-    Node<T> head = new Node<>(buildDefault(tClass));
-    Node<T> tail = new Node<>(buildDefault(tClass));
+    Node<T> head = new Node<>(new Object());
+    Node<T> tail = new Node<>(new Object());
     
     public SentinelLinkedList() {
         //Initially point sentinel head and tail to each other
@@ -33,11 +33,13 @@ public class SentinelLinkedList<T extends Comparable<T>> {
     //So even after removal of node the sentinel linked list is maintained 
     public boolean remove(T value) {
         for(Node<T> current = head.getNextEntry(); current != tail; current = current.getNextEntry()) {
-            if (current.getValue().compareTo(value) == 0) {
-                current.getPrevEntry().setNextEntry(current.getNextEntry());
-                current.getNextEntry().setPrevEntry(current.getPrevEntry());
-                return true;
-            }
+           if (value instanceof Comparable && current.getValue() instanceof Comparable) {
+                if (((Comparable) current.getValue()).compareTo(value) == 0) {
+                    current.getPrevEntry().setNextEntry(current.getNextEntry());
+                    current.getNextEntry().setPrevEntry(current.getPrevEntry());
+                    return true;
+                }
+           }
         }
         return false;
     }
