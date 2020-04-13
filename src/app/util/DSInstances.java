@@ -2,6 +2,7 @@ package app.util;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Enum that represents various Data Structures that can be run
@@ -10,49 +11,40 @@ import java.util.List;
  */
 public enum DSInstances {
 
-    SUPER_STRUCTURE(1, "Super Structure(HashTable + LinkedList + Binary Search Tree)", app.superstructure.Main.class),
-    SENTINEL_LINKED_LIST(2, "Sentinel Linked List", app.sentinellist.Main.class),
-    BINARY_SEARCH_TREE(3, "Binary Search Tree", app.binarysearchtree.Main.class);
+    SUPER_STRUCTURE(1, "Super Structure(HashTable + LinkedList + Binary Search Tree)", new app.superstructure.Main()),
+    SENTINEL_LINKED_LIST(2, "Sentinel Linked List", new app.sentinellist.Main()),
+    BINARY_SEARCH_TREE(3, "Binary Search Tree", new app.binarysearchtree.Main());
 
     private int id;
     private String name;
-    private Class className;
+    private Runner dsInstance;
 
-    private DSInstances(int id, String name, Class className) {
+    private DSInstances(int id, String name, Runner dsInstance) {
         this.id = id;
         this.name = name;
-        this.className = className;
+        this.dsInstance = dsInstance;
     }
 
-    public static List<DSInstances> getList() {
+    public static List<DSInstances> getDSInstanceList() {
         return Arrays.asList(SUPER_STRUCTURE, SENTINEL_LINKED_LIST, BINARY_SEARCH_TREE);
     }
     
-    public static Class getClass(int id) {
-        return getList().stream().filter(cls -> cls.id == id).findFirst().get().className;       
+    public static Optional<DSInstances> getDsInstanceById(int id) {
+        return Optional.ofNullable(getDSInstanceList()
+                                    .stream()
+                                    .filter(cls -> cls.id == id)
+                                    .findFirst()
+                                    .orElse(null));       
     }
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Runner getDsInstance() {
+        return dsInstance;
     }
-
-    public Class getClassName() {
-        return className;
-    }
-
-    public void setClassName(Class className) {
-        this.className = className;
-    }    
 }
