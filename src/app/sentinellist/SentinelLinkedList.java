@@ -6,9 +6,10 @@ package app.sentinellist;
  * @author Prateek Singh
  */
 public class SentinelLinkedList<T extends Comparable<T>> {
+    Class<T> tClass;
     //Create sentinel head and tail nodes
-    Node<T> head = new Node<>();
-    Node<T> tail = new Node<>();
+    Node<T> head = new Node<>(buildDefault(tClass));
+    Node<T> tail = new Node<>(buildDefault(tClass));
     
     public SentinelLinkedList() {
         //Initially point sentinel head and tail to each other
@@ -49,5 +50,13 @@ public class SentinelLinkedList<T extends Comparable<T>> {
             System.out.print(String.format("%s => ", current.getValue()));
         }        
         System.out.println("[Tail]");
+    }
+
+    public T buildDefault(Class<T> tClass) {        
+        try {
+            return tClass.newInstance();
+        } catch(Exception e) {
+            return null;                
+        }
     }
 }

@@ -10,13 +10,11 @@ class Node<T extends Comparable<T>> {
     private Node<T> nextEntry;
     private T value;
 
-    public Node() {}
-
     public Node(T value) {
         this.value = value;
     }
 
-    public Node getPrevEntry() {
+    public Node<T> getPrevEntry() {
         return prevEntry;
     }
 
