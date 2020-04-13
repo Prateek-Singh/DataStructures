@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author Prateek Singh
  */
-public enum AppInstances {
+public enum DSInstances {
 
     SUPER_STRUCTURE(1, "Super Structure(HashTable + LinkedList + Binary Search Tree)", app.superstructure.Main.class),
     SENTINEL_LINKED_LIST(2, "Sentinel Linked List", app.sentinellist.Main.class),
@@ -18,13 +18,13 @@ public enum AppInstances {
     private String name;
     private Class className;
 
-    private AppInstances(int id, String name, Class className) {
+    private DSInstances(int id, String name, Class className) {
         this.id = id;
         this.name = name;
         this.className = className;
     }
 
-    public static List<AppInstances> getList() {
+    public static List<DSInstances> getList() {
         return Arrays.asList(SUPER_STRUCTURE, SENTINEL_LINKED_LIST, BINARY_SEARCH_TREE);
     }
     
