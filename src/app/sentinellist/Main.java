@@ -9,7 +9,7 @@ import app.util.Runner;
  */
 public class Main implements Runner {
     public void run() {
-        SentinelLinkedList<Integer> sentinelLinkedList = new SentinelLinkedList<Integer>();
+        SentinelLinkedList<Integer> sentinelLinkedList = new SentinelLinkedList<>();
         sentinelLinkedList.add(8);
         sentinelLinkedList.add(6);
         sentinelLinkedList.add(4);
@@ -25,7 +25,7 @@ public class Main implements Runner {
         sentinelLinkedList.display();
         System.out.println();
 
-        SentinelLinkedList<String> sentinelLinkedListStr = new SentinelLinkedList<String>();
+        SentinelLinkedList<String> sentinelLinkedListStr = new SentinelLinkedList<>();
         sentinelLinkedListStr.add("Ritchie");
         sentinelLinkedListStr.add("Ken");
         sentinelLinkedListStr.add("Alan");
@@ -40,5 +40,16 @@ public class Main implements Runner {
         sentinelLinkedListStr.add("Ryan");
         sentinelLinkedListStr.display();
         System.out.println();
+
+        SentinelLinkedList<Customer> cSentinelLinkedList = new SentinelLinkedList<>();
+        cSentinelLinkedList.add(new Customer(1, "Apple"));
+        cSentinelLinkedList.add(new Customer(2, "Microsoft"));
+        cSentinelLinkedList.add(new Customer(3, "IBM"));
+        cSentinelLinkedList.add(new Customer(4, "Mozilla"));
+        cSentinelLinkedList.add(new Customer(5, "Oracle"));
+        cSentinelLinkedList.display();
+        cSentinelLinkedList.remove(new Customer(2, "Microsoft"));
+        cSentinelLinkedList.remove(new Customer(3, "IBM"));        
+        cSentinelLinkedList.display();
     }   
 }

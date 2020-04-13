@@ -6,12 +6,16 @@ package app.sentinellist;
  * @author Prateek Singh
  */
 public class SentinelLinkedList<T> {
-    Class<T> tClass;
     //Create sentinel head and tail nodes
-    Node<T> head = new Node<>(new Object());
-    Node<T> tail = new Node<>(new Object());
+    Node<T> head;
+    Node<T> tail;
     
     public SentinelLinkedList() {
+
+        //Initialize with empty object
+        head = new Node<>(new Object());
+        tail = new Node<>(new Object());
+
         //Initially point sentinel head and tail to each other
         head.setNextEntry(tail);
         tail.setPrevEntry(head);
@@ -52,13 +56,5 @@ public class SentinelLinkedList<T> {
             System.out.print(String.format("%s => ", current.getValue()));
         }        
         System.out.println("[Tail]");
-    }
-
-    public T buildDefault(Class<T> tClass) {        
-        try {
-            return tClass.newInstance();
-        } catch(Exception e) {
-            return null;                
-        }
     }
 }
