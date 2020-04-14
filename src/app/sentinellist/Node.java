@@ -10,6 +10,7 @@ class Node<T> {
     private Node<T> nextEntry;
     private T value;
 
+    //using simple cast along with Object
     public Node(Object value) {        ;
         this.value = (T) value;
     }

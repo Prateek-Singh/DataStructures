@@ -35,6 +35,7 @@ public class SentinelLinkedList<T> {
     //For remove we can consider that the node is always between sentinel head and tail
     //So we just need to remove the node and set appropriate next and previous entries
     //So even after removal of node the sentinel linked list is maintained 
+    //We check if type implements Comparable and use it's compareTo for removal of Node
     public boolean remove(T value) {
         for(Node<T> current = head.getNextEntry(); current != tail; current = current.getNextEntry()) {
            if (value instanceof Comparable && current.getValue() instanceof Comparable) {

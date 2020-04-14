@@ -1,5 +1,6 @@
 package app.sentinellist;
 
+//In order to remove it the type needs to implement Comparable
 public class Customer implements Comparable<Customer> {
     private int id;
     private String name;

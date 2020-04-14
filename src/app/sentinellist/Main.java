@@ -41,6 +41,7 @@ public class Main implements Runner {
         sentinelLinkedListStr.display();
         System.out.println();
 
+        //even works with user defined types
         SentinelLinkedList<Customer> cSentinelLinkedList = new SentinelLinkedList<>();
         cSentinelLinkedList.add(new Customer(1, "Apple"));
         cSentinelLinkedList.add(new Customer(2, "Microsoft"));
